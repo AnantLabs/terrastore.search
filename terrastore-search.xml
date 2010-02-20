@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="searchListener" class="terrastore.search.ElasticSearchListener">
+        <constructor-arg ref="esServer"/>
+        <constructor-arg ref="indexNameResolver"/>
+        <constructor-arg value="false"/>
+    </bean>
+
+    <bean id="esServer" class="terrastore.search.ElasticSearchServer">
+        <constructor-arg>
+            <util:map>
+                <entry key="http.enabled" value="true"/>
+                <entry key="node.data" value="true"/>
+            </util:map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="indexNameResolver" class="terrastore.search.FixedIndexNameResolver">
+        <constructor-arg value="search"/>
+    </bean>
+
+</beans>
