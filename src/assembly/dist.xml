@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="MacRoman"?>
+<assembly>
+    <id>dist</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <baseDirectory>terrastore-search-${project.version}-dist</baseDirectory>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>libs</outputDirectory>
+            <unpack>false</unpack>
+            <scope>runtime</scope>
+            <useProjectArtifact>false</useProjectArtifact>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+        </dependencySet>
+    </dependencySets>
+    <fileSets>
+        <fileSet>
+            <outputDirectory></outputDirectory>
+            <directory>target</directory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
