@@ -16,7 +16,7 @@
     </dependencySets>
     <fileSets>
         <fileSet>
-            <outputDirectory></outputDirectory>
+            <outputDirectory>libs</outputDirectory>
             <directory>target</directory>
             <includes>
                 <include>*.jar</include>
@@ -27,6 +27,10 @@
         <file>
             <outputDirectory></outputDirectory>
             <source>terrastore-search.xml</source>
+        </file>
+        <file>
+            <outputDirectory></outputDirectory>
+            <source>terrastore-search-install.xml</source>
         </file>
     </files>
 </assembly>

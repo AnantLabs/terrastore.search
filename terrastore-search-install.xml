@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="terrastore-install" basedir=".">
+
+    <target name="install" if="terrastore.home" description="Install Terrastore-Search">
+
+        <copy file="terrastore-search.xml" todir="${terrastore.home}/extensions"/>
+
+        <copy todir="${terrastore.home}/libs">
+            <fileset dir="${basedir}/libs">
+                <include name="*.jar"/>
+            </fileset>
+        </copy>
+
+    </target>
+
+</project>
