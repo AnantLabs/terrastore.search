@@ -156,6 +156,16 @@
     </dependencies>
     <repositories>
         <repository>
+            <id>local-repository</id>
+            <url>${project.baseUri}/maven2/repo</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
             <id>jboss-repository</id>
             <url>http://repository.jboss.org/maven2</url>
             <releases>
