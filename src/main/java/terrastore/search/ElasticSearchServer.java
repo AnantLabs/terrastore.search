@@ -17,7 +17,12 @@ public class ElasticSearchServer {
     private Server server;
 
     public ElasticSearchServer(Map configuration) {
+        this(configuration, true);
+    }
+
+    public ElasticSearchServer(Map configuration, boolean preferIPv4) {
         this.configuration = configuration;
+        System.setProperty("java.net.preferIPv4Stack", Boolean.toString(preferIPv4));
     }
 
     public void start() {
