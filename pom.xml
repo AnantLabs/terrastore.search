@@ -3,7 +3,7 @@
     <groupId>terrastore</groupId>
     <artifactId>terrastore-search</artifactId>
     <packaging>jar</packaging>
-    <version>0.1</version>
+    <version>0.2-SNAPSHOT</version>
     <name>terrastore-search</name>
     <scm>
         <connection>scm:hg:https://search.terrastore.googlecode.com/hg</connection>
