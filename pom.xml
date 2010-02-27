@@ -144,7 +144,7 @@
         <dependency>
             <groupId>terrastore</groupId>
             <artifactId>terrastore</artifactId>
-            <version>0.4.2-SNAPSHOT</version>
+            <version>0.4.2</version>
             <classifier>api</classifier>
             <scope>provided</scope>
         </dependency>
