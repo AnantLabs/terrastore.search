@@ -2,7 +2,6 @@ package terrastore.search;
 
 import java.util.HashSet;
 import java.util.Set;
-import org.apache.lucene.util.UnicodeUtil;
 import org.elasticsearch.ElasticSearchException;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.action.delete.DeleteRequest;
@@ -24,14 +23,6 @@ import static org.elasticsearch.client.Requests.indexRequest;
 public class ElasticSearchListener implements EventListener {
 
     private static final Logger LOG = LoggerFactory.getLogger(ElasticSearchListener.class);
-    //
-    private final ThreadLocal<UnicodeUtil.UTF16Result> cachedUtf = new ThreadLocal<UnicodeUtil.UTF16Result>() {
-
-        @Override
-        protected UnicodeUtil.UTF16Result initialValue() {
-            return new UnicodeUtil.UTF16Result();
-        }
-    };
     //
     private final ElasticSearchServer server;
     private final IndexNameResolver indexNameResolver;
@@ -65,14 +56,10 @@ public class ElasticSearchListener implements EventListener {
 
     @Override
     public void onValueChanged(final String bucket, final String key, final byte[] value) {
-        UnicodeUtil.UTF16Result utf16 = cachedUtf.get();
-        UnicodeUtil.UTF8toUTF16(value, 0, value.length, utf16);
-        String source = new String(utf16.result, 0, utf16.length);
-
         String index = indexNameResolver.resolve(bucket);
-        IndexRequest indexRequest = indexRequest(index).type(bucket).id(key).source(source);
+        IndexRequest indexRequest = indexRequest(index).type(bucket).id(key).source(value);
         if (asyncOperations) {
-            server.getClient().execIndex(indexRequest, new ActionListener<IndexResponse>() {
+            server.getClient().index(indexRequest, new ActionListener<IndexResponse>() {
 
                 @Override
                 public void onResponse(IndexResponse indexResponse) {
@@ -98,7 +85,7 @@ public class ElasticSearchListener implements EventListener {
         String index = indexNameResolver.resolve(bucket);
         DeleteRequest request = Requests.deleteRequest(index).type(bucket).id(key);
         if (asyncOperations) {
-            server.getClient().execDelete(request, new ActionListener<DeleteResponse>() {
+            server.getClient().delete(request, new ActionListener<DeleteResponse>() {
 
                 @Override
                 public void onResponse(DeleteResponse deleteResponse) {

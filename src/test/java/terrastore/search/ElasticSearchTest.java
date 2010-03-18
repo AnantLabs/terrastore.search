@@ -38,7 +38,7 @@ public class ElasticSearchTest {
         //
         Thread.sleep(3000);
         //
-        assertEquals(value, server.getClient().get(new GetRequest(INDEX, BUCKET, key)).actionGet().source());
+        assertEquals(value, server.getClient().get(new GetRequest(INDEX, BUCKET, key)).actionGet().sourceAsString());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class ElasticSearchTest {
         //
         Thread.sleep(3000);
         //
-        assertEquals(value, server.getClient().get(new GetRequest(INDEX, BUCKET, key)).actionGet().source());
+        assertEquals(value, server.getClient().get(new GetRequest(INDEX, BUCKET, key)).actionGet().sourceAsString());
         //
         listener.onValueRemoved(BUCKET, key);
         //

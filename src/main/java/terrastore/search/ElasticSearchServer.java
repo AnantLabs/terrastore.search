@@ -26,7 +26,7 @@ public class ElasticSearchServer {
     }
 
     public void start() {
-        server = serverBuilder().settings(settingsBuilder().putAll(configuration)).build();
+        server = serverBuilder().settings(settingsBuilder().put(configuration)).build();
         server.start();
     }
 
