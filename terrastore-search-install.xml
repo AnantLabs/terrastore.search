@@ -3,7 +3,8 @@
 
     <target name="install" if="terrastore.home" description="Install Terrastore-Search">
 
-        <copy file="terrastore-search.xml" todir="${terrastore.home}/extensions"/>
+        <copy file="terrastore-search-extension.xml" todir="${terrastore.home}/extensions"/>
+        <copy file="terrastore-search.properties" todir="${terrastore.home}/extensions"/>
 
         <copy todir="${terrastore.home}/libs">
             <fileset dir="${basedir}/libs">

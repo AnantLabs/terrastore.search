@@ -26,7 +26,11 @@
     <files>
         <file>
             <outputDirectory></outputDirectory>
-            <source>terrastore-search.xml</source>
+            <source>terrastore-search-extension.xml</source>
+        </file>
+        <file>
+            <outputDirectory></outputDirectory>
+            <source>terrastore-search.properties</source>
         </file>
         <file>
             <outputDirectory></outputDirectory>

@@ -12,7 +12,6 @@ import org.elasticsearch.client.Requests;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import terrastore.event.EventListener;
-
 import static java.util.Arrays.asList;
 import static org.elasticsearch.client.Requests.indexRequest;
 

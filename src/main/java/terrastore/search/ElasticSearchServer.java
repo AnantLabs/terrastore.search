@@ -2,9 +2,8 @@ package terrastore.search;
 
 import java.util.Map;
 import org.elasticsearch.client.Client;
-import org.elasticsearch.server.Server;
-
-import static org.elasticsearch.server.ServerBuilder.serverBuilder;
+import org.elasticsearch.node.Node;
+import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
 import static org.elasticsearch.util.settings.ImmutableSettings.settingsBuilder;
 
 /**
@@ -14,7 +13,7 @@ import static org.elasticsearch.util.settings.ImmutableSettings.settingsBuilder;
 public class ElasticSearchServer {
 
     private final Map configuration;
-    private Server server;
+    private Node server;
 
     public ElasticSearchServer(Map configuration) {
         this(configuration, true);
@@ -26,7 +25,7 @@ public class ElasticSearchServer {
     }
 
     public void start() {
-        server = serverBuilder().settings(settingsBuilder().put(configuration)).build();
+        server = nodeBuilder().settings(settingsBuilder().put(configuration)).build();
         server.start();
     }
 

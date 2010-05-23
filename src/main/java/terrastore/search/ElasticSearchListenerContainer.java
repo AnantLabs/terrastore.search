@@ -10,7 +10,7 @@ import terrastore.event.EventListener;
 @AutoDetect(name = "searchListener", order = 5)
 public class ElasticSearchListenerContainer implements EventListener {
 
-    private final static String TERRASTORE_SEARCH_CONTEXT = "terrastore-search.xml";
+    private final static String TERRASTORE_SEARCH_CONTEXT = "terrastore-search-extension.xml";
     private final static String TERRASTORE_SEARCH_LISTENER = "searchListener";
     private final ElasticSearchListener delegate;
 

@@ -46,9 +46,9 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>elasticsearch</groupId>
+            <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>0.5.1</version>
+            <version>0.7.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -66,29 +66,9 @@
             <version>3.0.1</version>
         </dependency>
         <dependency>
-            <groupId>jgroups</groupId>
-            <artifactId>jgroups</artifactId>
-            <version>2.9.0.GA</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-            <version>2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.inject.extensions</groupId>
-            <artifactId>guice-assisted-inject</artifactId>
-            <version>2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.inject.extensions</groupId>
-            <artifactId>guice-multibindings</artifactId>
-            <version>2.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-            <version>1.5</version>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-fast-vector-highlighter</artifactId>
+            <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>jline</groupId>
@@ -96,32 +76,15 @@
             <version>0.9.94</version>
         </dependency>
         <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>1.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.5.8</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>2.5.6</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>aopalliance</groupId>
-            <artifactId>aopalliance</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.15</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.4.2</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>2.5.6</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -131,21 +94,21 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.google.collections</groupId>
-            <artifactId>google-collections</artifactId>
-            <version>1.0</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.5.8</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.jboss.netty</groupId>
-            <artifactId>netty</artifactId>
-            <version>3.1.5.GA</version>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.15</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>terrastore</groupId>
             <artifactId>terrastore</artifactId>
-            <version>0.4.3-SNAPSHOT</version>
+            <version>0.5.0</version>
             <classifier>api</classifier>
             <scope>provided</scope>
         </dependency>
@@ -168,18 +131,14 @@
             </snapshots>
         </repository>
         <repository>
-            <id>jboss-repository</id>
-            <url>http://repository.jboss.org/maven2</url>
+            <id>es-repository</id>
+            <url>http://oss.sonatype.org/content/repositories/releases</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>fakse</enabled>
             </snapshots>
-        </repository>
-        <repository>
-            <id>snakeyaml-repository</id>
-            <url>http://snakeyamlrepo.appspot.com/repository</url>
         </repository>
     </repositories>
     <properties>

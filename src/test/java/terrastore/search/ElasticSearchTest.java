@@ -15,18 +15,20 @@ public class ElasticSearchTest {
     private static final String INDEX = "search";
     private static final String BUCKET = "bucket";
     private volatile ElasticSearchServer server;
-    private volatile ElasticSearchListener listener;
+    private volatile ElasticSearchListenerContainer listener;
 
     @Before
     public void setUp() {
         server = new ElasticSearchServer(new Properties());
-        listener = new ElasticSearchListener(server, new FixedIndexNameResolver(INDEX), true, BUCKET);
+        listener = new ElasticSearchListenerContainer();
+        server.start();
         listener.init();
     }
 
     @After
     public void tearDown() {
         listener.cleanup();
+        server.stop();
     }
 
     @Test
