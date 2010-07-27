@@ -48,32 +48,27 @@
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>0.7.1</version>
+            <version>0.9.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-analyzers</artifactId>
-            <version>3.0.1</version>
+            <version>3.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
-            <version>3.0.1</version>
+            <version>3.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-queries</artifactId>
-            <version>3.0.1</version>
+            <version>3.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-fast-vector-highlighter</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>jline</groupId>
-            <artifactId>jline</artifactId>
-            <version>0.9.94</version>
+            <version>3.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -108,7 +103,7 @@
         <dependency>
             <groupId>terrastore</groupId>
             <artifactId>terrastore</artifactId>
-            <version>0.5.0</version>
+            <version>0.6.0</version>
             <classifier>api</classifier>
             <scope>provided</scope>
         </dependency>
@@ -120,16 +115,6 @@
         </dependency>
     </dependencies>
     <repositories>
-        <repository>
-            <id>local-repository</id>
-            <url>${project.baseUri}/maven2/repo</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
         <repository>
             <id>es-repository</id>
             <url>http://oss.sonatype.org/content/repositories/releases</url>
