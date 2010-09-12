@@ -48,7 +48,7 @@
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>0.9.0</version>
+            <version>0.10.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -103,7 +103,7 @@
         <dependency>
             <groupId>terrastore</groupId>
             <artifactId>terrastore</artifactId>
-            <version>0.6.0</version>
+            <version>0.7.0</version>
             <classifier>api</classifier>
             <scope>provided</scope>
         </dependency>
@@ -116,7 +116,11 @@
     </dependencies>
     <repositories>
         <repository>
-            <id>es-repository</id>
+            <id>terrastore-repository</id>
+            <url>http://terrastore.googlecode.com/hg/maven2/repo</url>
+        </repository>
+        <repository>
+            <id>elasticsearch-repository</id>
             <url>http://oss.sonatype.org/content/repositories/releases</url>
             <releases>
                 <enabled>true</enabled>
