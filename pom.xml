@@ -48,7 +48,7 @@
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>0.10.0</version>
+            <version>0.12.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -73,37 +73,30 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>2.5.6</version>
+            <version>3.0.5.RELEASE</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>2.5.6</version>
+            <version>3.0.5.RELEASE</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.5.8</version>
+            <version>1.6.1</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.5.8</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.15</version>
-            <scope>provided</scope>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>1.6.1</version>
         </dependency>
         <dependency>
             <groupId>terrastore</groupId>
             <artifactId>terrastore</artifactId>
-            <version>0.7.0</version>
+            <version>0.8.0-SNAPSHOT</version>
             <classifier>api</classifier>
             <scope>provided</scope>
         </dependency>
@@ -113,11 +106,17 @@
             <version>4.7</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>2.5.2</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
             <id>terrastore-repository</id>
-            <url>http://terrastore.googlecode.com/hg/maven2/repo</url>
+            <url>http://m2.terrastore.googlecode.com/hg/repo</url>
         </repository>
         <repository>
             <id>elasticsearch-repository</id>

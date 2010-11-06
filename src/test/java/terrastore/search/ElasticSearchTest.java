@@ -5,7 +5,10 @@ import org.elasticsearch.action.get.GetRequest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import terrastore.event.ActionExecutor;
+import terrastore.event.Event;
 import static org.junit.Assert.*;
+import static org.easymock.EasyMock.*;
 
 /**
  * @author Sergio Bossa
@@ -14,6 +17,8 @@ public class ElasticSearchTest {
 
     private static final String INDEX = "search";
     private static final String BUCKET = "bucket";
+    private static final String KEY = "key";
+    private static final String VALUE = "{\"key\":\"value\"}";
     private volatile ElasticSearchServer server;
     private volatile ElasticSearchListenerContainer listener;
 
@@ -33,31 +38,45 @@ public class ElasticSearchTest {
 
     @Test
     public void testOnValueChanged() throws Exception {
-        String key = "key";
-        String value = "{\"key\":\"value\"}";
+        Event event = createMock(Event.class);
+        ActionExecutor executor = createMock(ActionExecutor.class);
+        expect(event.getBucket()).andReturn(BUCKET).once();
+        expect(event.getKey()).andReturn(KEY).once();
+        expect(event.getNewValueAsBytes()).andReturn(VALUE.getBytes()).once();
 
-        listener.onValueChanged(BUCKET, key, value.getBytes("UTF-8"));
+        replay(event, executor);
+
+        listener.onValueChanged(event, executor);
         //
         Thread.sleep(3000);
         //
-        assertEquals(value, server.getClient().get(new GetRequest(INDEX, BUCKET, key)).actionGet().sourceAsString());
+        assertEquals(VALUE, server.getClient().get(new GetRequest(INDEX, BUCKET, KEY)).actionGet().sourceAsString());
+
+        verify(event, executor);
     }
 
     @Test
     public void testOnValueChangedAndRemoved() throws Exception {
-        String key = "key";
-        String value = "{\"key\":\"value\"}";
+        Event event = createMock(Event.class);
+        ActionExecutor executor = createMock(ActionExecutor.class);
+        expect(event.getBucket()).andReturn(BUCKET).times(2);
+        expect(event.getKey()).andReturn(KEY).times(2);
+        expect(event.getNewValueAsBytes()).andReturn(VALUE.getBytes()).once();
 
-        listener.onValueChanged(BUCKET, key, value.getBytes("UTF-8"));
+        replay(event, executor);
+
+        listener.onValueChanged(event, executor);
         //
         Thread.sleep(3000);
         //
-        assertEquals(value, server.getClient().get(new GetRequest(INDEX, BUCKET, key)).actionGet().sourceAsString());
+        assertEquals(VALUE, server.getClient().get(new GetRequest(INDEX, BUCKET, KEY)).actionGet().sourceAsString());
         //
-        listener.onValueRemoved(BUCKET, key);
+        listener.onValueRemoved(event, executor);
         //
         Thread.sleep(3000);
         //
-        assertNull(server.getClient().get(new GetRequest(INDEX, BUCKET, key)).actionGet().source());
+        assertNull(server.getClient().get(new GetRequest(INDEX, BUCKET, KEY)).actionGet().source());
+
+        verify(event, executor);
     }
 }

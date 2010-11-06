@@ -2,6 +2,8 @@ package terrastore.search;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import terrastore.annotation.AutoDetect;
+import terrastore.event.ActionExecutor;
+import terrastore.event.Event;
 import terrastore.event.EventListener;
 
 /**
@@ -11,12 +13,11 @@ import terrastore.event.EventListener;
 public class ElasticSearchListenerContainer implements EventListener {
 
     private final static String TERRASTORE_SEARCH_CONTEXT = "terrastore-search-extension.xml";
-    private final static String TERRASTORE_SEARCH_LISTENER = "searchListener";
     private final ElasticSearchListener delegate;
 
     public ElasticSearchListenerContainer() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(TERRASTORE_SEARCH_CONTEXT);
-        delegate = (ElasticSearchListener) context.getBean(TERRASTORE_SEARCH_LISTENER, ElasticSearchListener.class);
+        delegate = context.getBean(ElasticSearchListener.class);
     }
 
     @Override
@@ -25,13 +26,13 @@ public class ElasticSearchListenerContainer implements EventListener {
     }
 
     @Override
-    public void onValueChanged(final String bucket, final String key, final byte[] value) {
-        delegate.onValueChanged(bucket, key, value);
+    public void onValueChanged(Event event, ActionExecutor executor) {
+        delegate.onValueChanged(event, executor);
     }
 
     @Override
-    public void onValueRemoved(final String bucket, final String key) {
-        delegate.onValueRemoved(bucket, key);
+    public void onValueRemoved(Event event, ActionExecutor executor) {
+        delegate.onValueRemoved(event, executor);
     }
 
     @Override

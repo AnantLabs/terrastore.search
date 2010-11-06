@@ -11,6 +11,8 @@ import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.client.Requests;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import terrastore.event.ActionExecutor;
+import terrastore.event.Event;
 import terrastore.event.EventListener;
 import static java.util.Arrays.asList;
 import static org.elasticsearch.client.Requests.indexRequest;
@@ -54,7 +56,10 @@ public class ElasticSearchListener implements EventListener {
     }
 
     @Override
-    public void onValueChanged(final String bucket, final String key, final byte[] value) {
+    public void onValueChanged(Event event, ActionExecutor executor) {
+        final String bucket = event.getBucket();
+        final String key = event.getKey();
+        byte[] value = event.getNewValueAsBytes();
         String index = indexNameResolver.resolve(bucket);
         IndexRequest indexRequest = indexRequest(index).type(bucket).id(key).source(value);
         if (asyncOperations) {
@@ -80,7 +85,9 @@ public class ElasticSearchListener implements EventListener {
     }
 
     @Override
-    public void onValueRemoved(final String bucket, final String key) {
+    public void onValueRemoved(Event event, ActionExecutor executor) {
+        final String bucket = event.getBucket();
+        final String key = event.getKey();
         String index = indexNameResolver.resolve(bucket);
         DeleteRequest request = Requests.deleteRequest(index).type(bucket).id(key);
         if (asyncOperations) {
