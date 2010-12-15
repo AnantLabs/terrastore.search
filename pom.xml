@@ -48,7 +48,7 @@
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>0.12.0</version>
+            <version>0.13.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -96,7 +96,7 @@
         <dependency>
             <groupId>terrastore</groupId>
             <artifactId>terrastore</artifactId>
-            <version>0.8.0-SNAPSHOT</version>
+            <version>0.8.0</version>
             <classifier>api</classifier>
             <scope>provided</scope>
         </dependency>
